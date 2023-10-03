@@ -57,6 +57,19 @@ function tips() {
             document.getElementById("calculate").innerHTML = myOutput;
         }
 </script>
+<form>
+    <input type="radio" id="sum" name="sum" value="sum">
+    <label for="sum">Sum</label></br>
+    <input type="radio" id="difference" name="difference" value="difference">
+    <label for="difference">diff</label></br>
+    <input type="radio" id="product" name="product" value="product">
+    <label for="product">multi</label></br>
+    <input type="radio" id="division" name="division" value="division">
+    <label for="division">div</label></br>
+    <input type="button" onclick="chooseOp()" value="Get Result">
+</form>
+<p id="calculate" style="font-weight: bold;">Result is shown here: </p>
+
 
 </body>
 </html> 
