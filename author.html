@@ -2,6 +2,7 @@
 <html>
  <head>
     <title>Introduction</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
  </head>
 <body>
 
@@ -14,15 +15,23 @@
     <label for="guess_author">Guess the author</label>
     <input type ="text" id="guessAuthor1" name="guessAuthor1" autofocus> <br><br>
 
-    <input type="button" onclick="checkAuthor()" value="Check the guess">
+    <input type="button" id="checkGuessButton" onclick="checkAuthor()" value="Check the guess">
 </form>
 
-
 <p id="result"> </p>
+
+<div class=" alert-warning mt-2" id="incorrectAnswer" style="display:none;">
+    Incorrect Guesses: <span id="incorrectCount">0</span>
+</div>
+
+<div class=" alert-info mt-2" id="outOfGuesses" style="display:none;">
+    Sorry, ran out of guesses.
+</div>
 
 <script> 
 var good=0;
 var oops=0;
+incorrectCount=0;
 
 function checkAuthor() {
     console.log("Getting form values")
@@ -40,6 +49,16 @@ function checkAuthor() {
 else{
 	oops=oops+1;
 	alert("Sorry");
+    incorrectCount++
+        document.getElementById("incorrectCount").textContent = incorrectCount;
+                if (incorrectCount === 7) {
+                    document.getElementById("outOfGuesses").style.display = "block";
+                    document.getElementById("checkGuessButton").onclick = function () {
+                        alert("Sorry, ran out of guesses.");
+                    };
+                } else {
+                    document.getElementById("incorrectAnswer").style.display = "block";
+                }
 }
 updateResults();
 }
